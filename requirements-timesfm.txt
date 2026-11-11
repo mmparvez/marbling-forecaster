@@ -1,0 +1,4 @@
+# Optional: Google TimesFM 3.0 (zero-shot foundation model). Needs Python >= 3.10.
+# NOTE: the TimesFM 3.0 *weights* are non-commercial / non-production use only.
+-r requirements.txt
+timesfm[torch]>=3.0.2
