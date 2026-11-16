@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 GRADES = ["MB_4", "MB_6", "MB_8", "MB_9"]
-DATE_COL = "Kill Date"
+DATE_COL = "Date"
 
 
 @dataclass
