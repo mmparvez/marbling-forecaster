@@ -4,7 +4,7 @@ This guide explains (1) what the script does from input to forecast and (2) how 
 
 ## 1. What is being forecast
 
-Each kill date, the plant produces a distribution of carcasses across marbling-score bands: **MB_4, MB_6, MB_8 and MB_9**. Each band is a share of the day's kills, and the four shares add up to 100 %. The goal is to forecast that distribution for the next kill date.
+Each date, the plant produces a distribution of carcasses across marbling-score bands: **MB_4, MB_6, MB_8 and MB_9**. Each band is a share of the day's total, and the four shares add up to 100 %. The goal is to forecast that distribution for the next date.
 
 Because the four shares move together (if one rises, another falls), the script forecasts them jointly and makes sure the output is a valid distribution.
 
@@ -14,7 +14,7 @@ Because the four shares move together (if one rises, another falls), the script 
 
 | # | Step | What happens | Code |
 |---|---|---|---|
-| 1 | **Load** | Reads `Kill Date` and the four `<grade>_act%` columns (`MB_4_act%`, `MB_6_act%`, `MB_8_act%`, `MB_9_act%`) by header name. Rows are sorted by date. | `data.py` |
+| 1 | **Load** | Reads `Date` and the four `<grade>_act%` columns (`MB_4_act%`, `MB_6_act%`, `MB_8_act%`, `MB_9_act%`) by header name. Rows are sorted by date. | `data.py` |
 | 2 | **Normalise** | Rescales the four shares so each row sums to 1 (the small MB_3 band is excluded). | `data.py` |
 | 3 | **Features** | For each date, builds inputs from **earlier dates only**: the last 3 values of each grade, trailing 4- and 8-period averages, annual seasonality (sine/cosine of day of year) and a time trend. | `features.py` |
 | 4 | **Target** | Models do not predict the share directly. They predict the **deviation from the trailing 8-period average**. With no real signal, a model therefore stays close to a sensible baseline. | `features.py`, `pipeline.py` |
@@ -104,9 +104,9 @@ A model's MAE only means something next to a trivial alternative:
 
 | Baseline | Idea |
 |---|---|
-| `naive_last` | Tomorrow looks like the last kill date |
-| `moving_avg_4` | Average of the last 4 kill dates |
-| `moving_avg_8` | Average of the last 8 kill dates |
+| `naive_last` | Tomorrow looks like the last date |
+| `moving_avg_4` | Average of the last 4 dates |
+| `moving_avg_8` | Average of the last 8 dates |
 
 On the sample data, the models (MAE about 0.034) comfortably beat `naive_last` (0.044), because yesterday's value is a noisy guide. They are about equal to `moving_avg_8` (0.0335). In plain terms: **the models are reliable, but a smoothed average captures almost everything that is predictable.** If a model ever falls clearly behind `moving_avg_8`, it is adding complexity without value.
 
