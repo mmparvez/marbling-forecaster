@@ -1,6 +1,6 @@
 # Marbling-Score Forecasting
 
-Forecast the **share of production in each marbling-score band** (MB_4, MB_6, MB_8, MB_9) for the next kill date, with a performance dashboard that shows how trustworthy each forecast is.
+Forecast the **share of production in each marbling-score band** (MB_4, MB_6, MB_8, MB_9) for the next date, with a performance dashboard that shows how trustworthy each forecast is.
 
 ![Walk-forward backtest](docs/images/actual_vs_forecast.png)
 
@@ -27,7 +27,7 @@ python run_forecast.py --xlsx data.xlsx --horizon 4 --refit-every 4
 python run_forecast.py --xlsx data.xlsx --timesfm                 # add TimesFM 3.0 (see below)
 ```
 
-Input: a sheet with a `Kill Date` column and `MB_4_act%`, `MB_6_act%`, `MB_8_act%`, `MB_9_act%` columns.
+Input: a sheet with a `Date` column and `MB_4_act%`, `MB_6_act%`, `MB_8_act%`, `MB_9_act%` columns.
 Results (CSV tables and PNG charts) are written to `outputs/`.
 
 ## Results on the sample plant data
