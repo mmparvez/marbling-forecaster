@@ -73,9 +73,3 @@ python run_forecast.py --xlsx data.xlsx --timesfm --tfm-univariate       # one g
 
 [**Workflow and performance-metrics guide**](docs/WORKFLOW_AND_METRICS.md): how the pipeline works step by step, and how to interpret each metric and chart.
 
-
-## Notes
-
-- Shares are re-normalised over the four tracked grades (the MB_3 band is close to zero in recent data).
-- The best model is picked on the same backtest it is scored on, so its score is slightly optimistic; treat near-ties as ties.
-- Do not commit proprietary data. `.gitignore` excludes `*.xlsx`.
