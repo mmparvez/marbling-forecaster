@@ -10,25 +10,6 @@ Because the four shares move together (if one rises, another falls), the script 
 
 ## 2. Workflow at a glance
 
-```mermaid
-flowchart TD
-    A[Excel / demo data] --> B[Load + normalise shares]
-    B --> C[Build features once]
-    C --> D[Tune 6 models once<br/>time-series CV]
-    D --> E[Walk-forward backtest<br/>expanding window]
-    C --> F[Baselines<br/>naive, moving averages]
-    A -.-> T[TimesFM 3.0, zero-shot<br/>optional]
-    T -.-> G
-    E --> G[Reconcile shares<br/>clip + rescale to 100%]
-    F --> H
-    G --> H[Score: MAE, RMSE, sMAPE, R2, bias]
-    H --> I[Pick best model + build intervals]
-    I --> J[Refit on all data, forecast next date]
-    H --> K[Performance charts + CSV tables]
-    J --> K
-    J --> L[Optional: write into Excel copy]
-```
-
 ### Step by step
 
 | # | Step | What happens | Code |
