@@ -1,6 +1,6 @@
 # Marbling-Score Forecasting
 
-Forecast the **share of kills in each marbling-score band** (MB_4, MB_6, MB_8, MB_9) for the next kill date, with a performance dashboard that shows how trustworthy each forecast is.
+Forecast the **share of production in each marbling-score band** (MB_4, MB_6, MB_8, MB_9) for the next kill date, with a performance dashboard that shows how trustworthy each forecast is.
 
 ![Walk-forward backtest](docs/images/actual_vs_forecast.png)
 
