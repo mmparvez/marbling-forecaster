@@ -73,24 +73,6 @@ python run_forecast.py --xlsx data.xlsx --timesfm --tfm-univariate       # one g
 
 [**Workflow and performance-metrics guide**](docs/WORKFLOW_AND_METRICS.md): how the pipeline works step by step, and how to interpret each metric and chart.
 
-## Project layout
-
-```
-marbling_forecast/
-  config.py      settings (lags, windows, CV folds, horizon, interval level)
-  data.py        Excel loading, share normalisation, demo data
-  features.py    leak-free feature engineering
-  models.py      model zoo, one-off tuning, share reconciliation
-  backtest.py    walk-forward engine and baselines
-  metrics.py     MAE / RMSE / sMAPE / R2 / bias
-  plots.py       performance charts
-  pipeline.py    end-to-end orchestration and final forecast
-  foundation.py  optional TimesFM 3.0 adapter
-  excel_io.py    optional write-back to Excel
-run_forecast.py  command-line entry point
-tests/           leakage, reconciliation, pipeline and TimesFM-adapter tests
-docs/            workflow guide and figures
-```
 
 ## Notes
 
