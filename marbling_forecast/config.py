@@ -14,7 +14,7 @@ class Config:
     refit_every: int = 1         # refit cadence inside the backtest (hyper-params stay fixed)
     cv_splits: int = 4           # TimeSeriesSplit folds for the one-off tuning
     n_iter: int = 12             # random-search draws per model
-    horizon: int = 1             # steps ahead to forecast
+    horizon: int = 1             # steps ahead to forecast 
     ci: float = 0.80             # prediction-interval level (from backtest residuals)
     n_jobs: int = -1
     seed: int = 42
